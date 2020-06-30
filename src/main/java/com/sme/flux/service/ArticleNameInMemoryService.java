@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.stereotype.Service;
 
 import com.sme.flux.builder.PojoGenericBuilder;
@@ -20,9 +22,13 @@ import reactor.core.publisher.Mono;
 public class ArticleNameInMemoryService
 {
     private static final int COUNT = 100;
-    private static List<ArticleName> ARTICLE_NAMES = new ArrayList<>();
+    private final List<ArticleName> articleNames = new ArrayList<>();
 
-    static
+    /**
+     * Initialize data in memory.
+     */
+    @PostConstruct
+    public void initialize()
     {
         // CSOFF
         List<ArticleName> collect = IntStream.range(1, COUNT)
@@ -38,7 +44,7 @@ public class ArticleNameInMemoryService
                 .collect(Collectors.toList());
         // CSON
 
-        ARTICLE_NAMES.addAll(collect);
+        articleNames.addAll(collect);
     }
 
     /**
@@ -48,7 +54,7 @@ public class ArticleNameInMemoryService
      */
     public Flux<ArticleName> findAll()
     {
-        return Flux.fromStream(ARTICLE_NAMES.stream());
+        return Flux.fromStream(articleNames.stream());
     }
 
     /**
@@ -59,7 +65,7 @@ public class ArticleNameInMemoryService
      */
     public Mono<ArticleName> findById(long id)
     {
-        return Mono.justOrEmpty(ARTICLE_NAMES.stream()
+        return Mono.justOrEmpty(articleNames.stream()
                 .filter(a -> a.getId() == id)
                 .findFirst());
     }
