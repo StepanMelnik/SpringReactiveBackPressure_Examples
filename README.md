@@ -42,8 +42,8 @@ To understand the reactive lifecycle of WebFlux, check the following:
 
  
 ##### Example in Browser
-* start <a href="https://github.com/StepanMelnik/SpringReactiveBackPressure_Examples/blob/master/src/main/java/com/sme/flux/SpringReactiveBackPressureApplication.java">SpringReactiveBackPressureApplication.java</a> that will start Netty on 8010 port;
-* open <a href="http://localhost:8010/v1/article-names/parallel?qName=2&delay=5000">http://localhost:8010/v1/article-names/parallel?qName=2&delay=5000</a> in browser. The request filters all list of article names and filters by ArticleName#name:contains("2"). Also the request works with "delay" parameter that will delay to send each element from the server to client to see how it works.
+* start <a href="https://github.com/StepanMelnik/SpringReactiveBackPressure_Examples/blob/master/src/main/java/com/sme/flux/SpringReactiveBackPressureApplication.java">SpringReactiveBackPressureApplication.java</a> that will start Netty on 8010 port (mvn spring:boot run or run the class in your favorite IDE);
+* open <a href="http://localhost:8010/v1/article-names/parallel?qName=2&delay=5000">http://localhost:8010/v1/article-names/parallel?qName=2&delay=5000</a> in browser. The request filters all list of article names by ArticleName#name:contains("2"). Also the request works with "delay" parameter that will delay to send each element from the server to client to see how it works.
 * Also you may put Breakpoint in "doOnEach" method to see what element is prepared to send back to the client.
 
 ![Example in Browser](https://github.com/StepanMelnik/SpringReactiveBackPressure_Examples/blob/master/images/ExampleInBrowser.png?raw=true)
