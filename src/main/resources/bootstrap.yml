@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: springreactive-backpressure
+  profiles:
+    active:
+      default
+  devtools:
+    add-properties: true
+# Debug
+#debug: true
+# Allows to trace all calls
+#trace: true

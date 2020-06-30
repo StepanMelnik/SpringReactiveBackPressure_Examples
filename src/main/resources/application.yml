@@ -1,0 +1,14 @@
+# https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html
+server:
+   port: 8010
+   compression:
+     enabled: true
+   error:
+     path: /error
+   http2:
+     enabled: true
+   tomcat:
+      max-threads: 20
+      basedir: ./target/netty
+      accesslog:
+        enabled: true
